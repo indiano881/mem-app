@@ -1,6 +1,5 @@
 import styled from "styled-components"
 
-
 const StyledHeader = styled.div`
     background-color: #A8DCD9;
     color: #333333;
@@ -16,11 +15,7 @@ const StyledHeader = styled.div`
     h3 {
         margin: 0;
     }
-
-
 `
-
-
 
 const Header = () => {
     return (
