@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 import styled from "styled-components"
 
 
@@ -30,17 +30,26 @@ const StyledBotton = styled.button`
 
 `
 
-const Form = () => {
+interface FormProps {
+    setActivitiesList: (activities: string[])=>void;
+}
+
+const Form = ({setActivitiesList}:FormProps) => {
 
     const [activity, setActivity]= useState()
 
-    const handleChange = (event) => {
+    const handleChange = (event: { target: { value: SetStateAction<undefined>; }; }) => {
         setActivity(event.target.value)
         console.log(activity)
     }
 
+    const handleSubmit = () => {
+        event.preventDefault();
+        setActivitiesList(prevActivities => [...prevActivities, activity]);
+    }
+
     return (
-        <StyledForm>
+        <StyledForm onSubmit={handleSubmit}>
             
                 <label htmlFor="activity">ACTIVITY: </label>
                 <input onChange={handleChange} type="text" id="fname" name="fname" />

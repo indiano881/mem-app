@@ -11,7 +11,8 @@ function App() {
   return (
     <>
      <Header />
-     <Form />
+     <Form setActivitiesList={setActivitiesList} />
+     {console.log(activitiesList)}
     </>
   )
 }
