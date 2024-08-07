@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components"
 
 
@@ -30,11 +31,19 @@ const StyledBotton = styled.button`
 `
 
 const Form = () => {
+
+    const [activity, setActivity]= useState()
+
+    const handleChange = (event) => {
+        setActivity(event.target.value)
+        console.log(activity)
+    }
+
     return (
         <StyledForm>
             
                 <label htmlFor="activity">ACTIVITY: </label>
-                <input type="text" id="fname" name="fname" />
+                <input onChange={handleChange} type="text" id="fname" name="fname" />
                 <StyledBotton>ADD</StyledBotton>
             
         </StyledForm>
