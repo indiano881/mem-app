@@ -7,7 +7,7 @@ const StyledForm = styled.form`
     background-color: #F79D65;
     color: #333333;
     display: flex;
-    font-family: "Monoton";
+    font-family: "Kanit";
     justify-content: center;
     margin: 0;
     min-height: 60px;
@@ -26,7 +26,8 @@ const StyledBotton = styled.button`
     cursor: pointer;
 
     &:hover {
-    background-color: #A8DCD9;}
+        background-color: #94C9A9;
+    }
 
 `
 

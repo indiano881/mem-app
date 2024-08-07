@@ -3,7 +3,7 @@ import styled from "styled-components"
 const StyledHeader = styled.div`
     background-color: #A8DCD9;
     color: #333333;
-    font-family: "Monoton";
+    font-family: "Kanit";
     margin: 0;
     min-height: 80px;
     text-align: center;
@@ -21,7 +21,7 @@ const Header = () => {
     return (
         <StyledHeader>
           <h1>Mem-App</h1>
-          <h3>Add and remove anything you need!</h3>
+          <h3>Add and remove anything you want !</h3>
         </StyledHeader>
     )
 };
