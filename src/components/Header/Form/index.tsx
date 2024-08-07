@@ -36,7 +36,7 @@ interface FormProps {
 
 const Form = ({setActivitiesList}:FormProps) => {
 
-    const [activity, setActivity]= useState()
+    const [activity, setActivity]= useState<string>("")
 
     const handleChange = (event: { target: { value: SetStateAction<undefined>; }; }) => {
         setActivity(event.target.value)
@@ -46,14 +46,15 @@ const Form = ({setActivitiesList}:FormProps) => {
     const handleSubmit = (event: { preventDefault: () => void; }) => {
         event.preventDefault();
         setActivitiesList((prevActivities: any) => [...prevActivities, activity]); {/**FX THIS HERE BETTER */}
+        setActivity("");
     }
 
     return (
         <StyledForm onSubmit={handleSubmit}>
             
-                <label htmlFor="activity">ACTIVITY: </label>
+                <label htmlFor="activity"><h3>ACTIVITY: </h3></label>
                 <input onChange={handleChange} type="text" id="fname" name="fname" />
-                <StyledBotton>ADD</StyledBotton>
+                <StyledBotton><h3>ADD</h3></StyledBotton>
             
         </StyledForm>
     )
