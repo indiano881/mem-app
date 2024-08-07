@@ -1,5 +1,5 @@
 import Header from "./components/Header"
-
+import Form from "./components/Header/Form"
 
 
 function App() {
@@ -7,8 +7,8 @@ function App() {
 
   return (
     <>
-     <h1>connected</h1>
      <Header />
+     <Form />
     </>
   )
 }

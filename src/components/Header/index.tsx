@@ -3,13 +3,18 @@ import styled from "styled-components"
 
 const StyledHeader = styled.div`
     background-color: #A8DCD9;
-    text-align: center;
+    color: #333333;
+    font-family: "Monoton";
     margin: 0;
     min-height: 80px;
-    font-family: "Monoton";
+    text-align: center;
 
     h1 {
         font-size: 2rem;
+    }
+
+    h3 {
+        margin: 0;
     }
 
 
