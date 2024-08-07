@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 
-const StyledForm = styled.div`
+const StyledForm = styled.form`
     align-items: center;
     background-color: #F79D65;
     color: #333333;
@@ -11,17 +11,32 @@ const StyledForm = styled.div`
     margin: 0;
     min-height: 60px;
 
+    input {
+        border: 2px solid #333333;
+        border-radius: 10px;
+        margin-left: 8px; 
+        margin-right: 8px; 
+    }
+`
+
+const StyledBotton = styled.button`
+    border: 2px solid #333333;
+    border-radius: 10px;
+    cursor: pointer;
+
+    &:hover {
+    background-color: #A8DCD9;}
 
 `
 
 const Form = () => {
     return (
         <StyledForm>
-            <form>
-                <label htmlFor="activity">Activity: </label>
+            
+                <label htmlFor="activity">ACTIVITY: </label>
                 <input type="text" id="fname" name="fname" />
-                <button> ADD </button>
-            </form>
+                <StyledBotton>ADD</StyledBotton>
+            
         </StyledForm>
     )
 };
