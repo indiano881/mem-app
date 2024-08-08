@@ -15,7 +15,7 @@ function App() {
      <Header />
      <Form setActivitiesList={setActivitiesList} />
      {console.log(activitiesList)}
-     <MainContent activitiesList={activitiesList}/>
+     <MainContent activitiesList={activitiesList} setActivitiesList={setActivitiesList}/>
      <Footer />
     </>
   )
