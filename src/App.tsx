@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Header from "./components/Header"
 import Form from "./components/Form"
 import MainContent from "./components/MainContent"
@@ -9,6 +9,16 @@ function App() {
 
   const [activitiesList, setActivitiesList]=useState<string[]>([])
   
+  
+  {/*CHECK FROM HERE */}
+  useEffect(()=> {
+    localStorage.setItem("UserSavedActivities", JSON.stringify(activitiesList))
+  },[])
+
+  useEffect(()=> {
+    localStorage.setItem("UserSavedActivities", JSON.stringify(activitiesList))
+  },[activitiesList])
+
 
   return (
     <>

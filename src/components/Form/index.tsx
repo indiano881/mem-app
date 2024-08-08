@@ -46,8 +46,9 @@ const Form = ({setActivitiesList}:FormProps) => {
 
     const handleSubmit = (event: { preventDefault: () => void; }) => {
         event.preventDefault();
-        setActivitiesList((prevActivities: string[]) => [...prevActivities, activity]); {/**FX THIS HERE BETTER */}
+        setActivitiesList((prevActivities: string[]) => [...prevActivities, activity]);
         setActivity("");
+        
     }
 
     return (
