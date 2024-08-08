@@ -10,6 +10,7 @@ const StyledHeader = styled.div`
 
     h1 {
         font-size: 2rem;
+        margin-top: 0;
     }
 
     h3 {
