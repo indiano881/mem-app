@@ -50,10 +50,6 @@ const Form = ({setActivitiesList}:FormProps) => {
         setActivity("");
     }
 
-    const handleDelete=(activity:string)=>{
-        setActivitiesList(prevActivities=> prevActivities.filter((item)=> item !== activity))
-    }
-
     return (
         <StyledForm onSubmit={handleSubmit}>
             
