@@ -32,21 +32,21 @@ const StyledBotton = styled.button`
 `
 
 interface FormProps {
-    setActivitiesList: (activities: string[])=>void;
+    setActivitiesList: React.Dispatch<React.SetStateAction<string[]>>
 }
 
 const Form = ({setActivitiesList}:FormProps) => {
 
     const [activity, setActivity]= useState<string>("")
 
-    const handleChange = (event: { target: { value: SetStateAction<undefined>; }; }) => {
+    const handleChange = (event: { target: { value: SetStateAction<string>; }; }) => {
         setActivity(event.target.value)
         console.log(activity)
     }
 
     const handleSubmit = (event: { preventDefault: () => void; }) => {
         event.preventDefault();
-        setActivitiesList((prevActivities: any) => [...prevActivities, activity]); {/**FX THIS HERE BETTER */}
+        setActivitiesList((prevActivities: string[]) => [...prevActivities, activity]); {/**FX THIS HERE BETTER */}
         setActivity("");
     }
 

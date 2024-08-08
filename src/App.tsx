@@ -7,7 +7,7 @@ import Footer from "./components/Footer"
 
 function App() {
 
-  const [activitiesList, setActivitiesList]=useState<Array<any>>([])
+  const [activitiesList, setActivitiesList]=useState<string[]>([])
   
 
   return (
