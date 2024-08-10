@@ -1,12 +1,8 @@
-// Extending the Storage prototype
 Storage.prototype.setObj = function(key: string, obj: any) {
     return this.setItem(key, JSON.stringify(obj));
 };
 
-
-
-// Form Component
-import { SetStateAction, useState, useEffect } from "react";
+import { SetStateAction, useState} from "react";
 import styled from "styled-components";
 
 const StyledForm = styled.form`
@@ -54,8 +50,8 @@ const Form = ({ setActivitiesList, activitiesList }: FormProps) => {
         if (activity.trim()) {
             const updatedActivities = [...activitiesList, activity];
             setActivitiesList(updatedActivities);
-            localStorage.setObj("SavedActivity", updatedActivities); // Save using the new method
-            setActivity(""); // Clear the input field
+            localStorage.setObj("SavedActivity", updatedActivities); 
+            setActivity(""); 
         }
     };
 
