@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
+import screens from "../../utils/breakpoints";
 
 const StyledMainContent = styled.div`
     align-items: center;
@@ -11,6 +12,13 @@ const StyledMainContent = styled.div`
     margin: 0;
     min-height: 800px;
     text-align: center;
+
+    @media only screen and ${screens.lg} {
+        display: flex;
+        flex-direction: row;
+        flex: 0 0 calc(50% - 24px);
+        flex-wrap: wrap;
+    }
 `;
 
 const StyledPar = styled.p`
@@ -24,6 +32,20 @@ const StyledPar = styled.p`
     &:hover {
         background-color: white;
     }
+
+    @media only screen and ${screens.lg} {
+        flex: 0 0 calc(50% - 24px);
+    }
+`;
+
+const StyledButton = styled.button`
+    border: 2px solid #333333;
+    border-radius: 10px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #F79D65;
+    }
 `;
 
 interface MainContentProps {
@@ -34,15 +56,25 @@ interface MainContentProps {
 const MainContent = ({ activitiesList, setActivitiesList }: MainContentProps) => {
 
     const handleDelete = (activity: string) => {
-        setActivitiesList(prevActivities => prevActivities.filter(item => item !== activity));
+        const updatedActivities = activitiesList.filter(item => item !== activity);
+        setActivitiesList(updatedActivities);
+        localStorage.setItem("SavedActivity", JSON.stringify(updatedActivities));
     };
+
+    useEffect(() => {
+        // Load activities from localStorage on component mount
+        const savedActivities = localStorage.getItem("SavedActivity");
+        if (savedActivities) {
+            setActivitiesList(JSON.parse(savedActivities));
+        }
+    }, [setActivitiesList]);
 
     return (
         <StyledMainContent>
             {activitiesList.map((item, index) => (
                 <StyledPar key={index}>
-                    <h3>{item}</h3>
-                    <button onClick={() => handleDelete(item)}>DELETE</button>
+                    <p>{item}</p>
+                    <StyledButton onClick={() => handleDelete(item)}>DELETE</StyledButton>
                 </StyledPar>
             ))}
         </StyledMainContent>
