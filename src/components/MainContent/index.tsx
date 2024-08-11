@@ -1,7 +1,19 @@
 import React, { useEffect } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import screens from "../../utils/breakpoints";
 
+
+
+const slidein = keyframes`
+  from {
+    background-position: top;
+    background-size: 3000px;
+  }
+  to {
+    background-position: -100px 0px;
+    background-size: 2750px;
+  }
+`;
 const StyledMainContent = styled.div`
     align-items: center;
     background-color: #A8DCD9;
@@ -12,6 +24,13 @@ const StyledMainContent = styled.div`
     margin: 0;
     min-height: 800px;
     text-align: center;
+    @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:200');
+
+  
+    background-image: url('https://static.pexels.com/photos/414171/pexels-photo-414171.jpeg');
+    background-size: cover;
+    animation: ${slidein} 65s alternate infinite forwards;
+  
 
     @media only screen and ${screens.lg} {
         display: flex;
