@@ -41,7 +41,7 @@ const StyledMainContent = styled.div`
 `;
 
 const StyledPar = styled.p`
-    background-color: #94C9A9;
+    background-color: #A8DCD9;
     height: 60px;
     width: 60%;
     border: 2px solid #333333;
