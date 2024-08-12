@@ -4,7 +4,7 @@ import Form from "./components/Form";
 import MainContent from "./components/MainContent";
 import Footer from "./components/Footer";
 
-// Extend the Storage prototype to include getObj
+
 Storage.prototype.getObj = function(key: string) {
   const value = this.getItem(key);
   return value ? JSON.parse(value) : null;
@@ -12,12 +12,16 @@ Storage.prototype.getObj = function(key: string) {
 
 function App() {
   const [activitiesList, setActivitiesList] = useState<string[]>([]);
-
-  // Load saved activities from localStorage on component mount
+  const [markedItems, setMarkedItems] = useState<string[]>([]);
+  
   useEffect(() => {
     const savedActivities = localStorage.getObj("UserSavedActivities");
+    const markedActivities = localStorage.getObj("markedActivities");
     if (savedActivities) {
       setActivitiesList(savedActivities);
+    }
+    if (markedActivities) {
+      setMarkedItems(markedActivities);
     }
   }, []);
 
@@ -26,7 +30,7 @@ function App() {
       <Header />
       <Form setActivitiesList={setActivitiesList} activitiesList={activitiesList} />
       {console.log(activitiesList)}
-      <MainContent activitiesList={activitiesList} setActivitiesList={setActivitiesList} />
+      <MainContent activitiesList={activitiesList} setActivitiesList={setActivitiesList} markedItems={markedItems} setMarkedItems={setMarkedItems}/>
       <Footer />
     </>
   );

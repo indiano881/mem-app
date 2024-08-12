@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import screens from "../../utils/breakpoints";
 
@@ -85,10 +85,12 @@ const StyledButton = styled.button`
 interface MainContentProps {
     activitiesList: string[];
     setActivitiesList: React.Dispatch<React.SetStateAction<string[]>>;
+    markedItems: string[];
+    setMarkedItems: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
-const MainContent = ({ activitiesList, setActivitiesList }: MainContentProps) => {
-    const [markedItems, setMarkedItems] = useState<string[]>([]);
+const MainContent = ({ activitiesList, setActivitiesList,markedItems, setMarkedItems}: MainContentProps) => {
+    
 
     const handleDelete = (activity: string) => {
         const updatedActivities = activitiesList.filter(item => item !== activity);
@@ -97,10 +99,17 @@ const MainContent = ({ activitiesList, setActivitiesList }: MainContentProps) =>
     };
 
     const handleMark = (activity: string) => {
-        setMarkedItems(prevState =>
-            prevState.includes(activity) ? prevState.filter(item => item !== activity) : [...prevState, activity]
-        );
-        console.log("marked itemns:"+markedItems)
+        
+        setMarkedItems(prevState => {
+            const updatedMarkedItems = prevState.includes(activity)
+                ? prevState.filter(item => item !== activity) 
+                : [...prevState, activity]; 
+    
+            
+            localStorage.setItem("markedActivities", JSON.stringify(updatedMarkedItems));
+    
+            return updatedMarkedItems;
+        });
     };
 
     useEffect(() => {
@@ -110,6 +119,14 @@ const MainContent = ({ activitiesList, setActivitiesList }: MainContentProps) =>
             setActivitiesList(JSON.parse(savedActivities));
         }
     }, [setActivitiesList]);
+
+    useEffect(() => {
+        
+        const savedActivities = localStorage.getItem("markedActivities");
+        if (savedActivities) {
+            setMarkedItems(JSON.parse(savedActivities));
+        }
+    }, [setMarkedItems]);
 
     return (
         <StyledMainContent>
