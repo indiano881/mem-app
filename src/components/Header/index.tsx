@@ -5,12 +5,12 @@ const StyledHeader = styled.div`
     color: #333333;
     font-family: "Kanit";
     margin: 0;
-    min-height: 80px;
+    min-height: 60px;
     text-align: center;
 
     h1 {
         font-size: 2rem;
-        margin-top: 0;
+        margin: 0;
     }
 
     h3 {

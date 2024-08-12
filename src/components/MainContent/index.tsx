@@ -29,10 +29,12 @@ const StyledMainContent = styled.div`
     animation: ${slidein} 65s alternate infinite forwards;
 
     @media only screen and ${screens.lg} {
+        align-items: normal;
         display: flex;
         flex-direction: row;
         flex: 0 0 calc(50% - 24px);
         flex-wrap: wrap;
+        justify-content: center;
     }
 `;
 

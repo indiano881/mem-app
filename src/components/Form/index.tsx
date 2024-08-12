@@ -8,13 +8,14 @@ import styled from "styled-components";
 const StyledForm = styled.form`
     align-items: center;
     background-color: #F79D65;
+    border: 2px solid #333333;
     color: #333333;
     display: flex;
     font-family: "Kanit";
     justify-content: center;
     margin: 0;
     min-height: 60px;
-
+    
     input {
         border: 2px solid #333333;
         border-radius: 10px;
