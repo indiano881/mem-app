@@ -100,6 +100,7 @@ const MainContent = ({ activitiesList, setActivitiesList }: MainContentProps) =>
         setMarkedItems(prevState =>
             prevState.includes(activity) ? prevState.filter(item => item !== activity) : [...prevState, activity]
         );
+        console.log("marked itemns:"+markedItems)
     };
 
     useEffect(() => {

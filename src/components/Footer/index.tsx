@@ -4,6 +4,7 @@ import styled from "styled-components"
 const StyledFooter= styled.footer`
     align-items: center;
     background-color: #F79D65;
+    border: 2px solid #333333;
     color: #333333;
     display: flex;
     font-family: "Kanit";

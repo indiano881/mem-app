@@ -59,7 +59,7 @@ const Form = ({ setActivitiesList, activitiesList }: FormProps) => {
     return (
         <StyledForm onSubmit={handleSubmit}>
             <label htmlFor="activity"><h3>ACTIVITY: </h3></label>
-            <input onChange={handleChange} type="text" placeholder="..." value={activity} />
+            <input onChange={handleChange} type="text" placeholder="" value={activity} />
             <StyledButton type="submit"><h3>ADD</h3></StyledButton>
         </StyledForm>
     );
