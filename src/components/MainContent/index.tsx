@@ -21,7 +21,7 @@ const StyledMainContent = styled.div`
     flex-direction: column;
     font-family: "Kanit";
     margin: 0;
-    min-height: 800px;
+    min-height: 700px;
     text-align: center;
 
     background-image: url('https://static.pexels.com/photos/414171/pexels-photo-414171.jpeg');
@@ -50,11 +50,14 @@ const StyledPar = styled.div<{ mark: boolean }>`
     align-items: center;
     justify-content: space-between;
     padding: 0 10px;
+    font-size: 1.7rem;
 
     &:hover {
         background-color: white;
     }
-
+    @media only screen and ${screens.md} {
+        font-size: 2rem;
+    }
     @media only screen and ${screens.lg} {
         flex: 0 0 calc(50% - 24px);
     }
