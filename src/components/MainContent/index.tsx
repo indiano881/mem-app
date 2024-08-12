@@ -1,8 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
 import screens from "../../utils/breakpoints";
-
-
 
 const slidein = keyframes`
   from {
@@ -14,6 +12,7 @@ const slidein = keyframes`
     background-size: 2750px;
   }
 `;
+
 const StyledMainContent = styled.div`
     align-items: center;
     background-color: #A8DCD9;
@@ -24,13 +23,10 @@ const StyledMainContent = styled.div`
     margin: 0;
     min-height: 800px;
     text-align: center;
-    @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:200');
 
-  
     background-image: url('https://static.pexels.com/photos/414171/pexels-photo-414171.jpeg');
     background-size: cover;
     animation: ${slidein} 65s alternate infinite forwards;
-  
 
     @media only screen and ${screens.lg} {
         display: flex;
@@ -40,13 +36,18 @@ const StyledMainContent = styled.div`
     }
 `;
 
-const StyledPar = styled.p`
+const StyledPar = styled.div<{ mark: boolean }>`
     background-color: #A8DCD9;
     height: 60px;
     width: 60%;
     border: 2px solid #333333;
     border-radius: 10px;
     cursor: pointer;
+    text-decoration: ${props => props.mark ? "line-through" : "none"};
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
 
     &:hover {
         background-color: white;
@@ -61,6 +62,7 @@ const StyledButton = styled.button`
     border: 2px solid #333333;
     border-radius: 10px;
     cursor: pointer;
+    margin-left: 10px;
 
     &:hover {
         background-color: #F79D65;
@@ -73,11 +75,20 @@ interface MainContentProps {
 }
 
 const MainContent = ({ activitiesList, setActivitiesList }: MainContentProps) => {
+    const [markedItems, setMarkedItems] = useState<string[]>([]);
 
     const handleDelete = (activity: string) => {
         const updatedActivities = activitiesList.filter(item => item !== activity);
         setActivitiesList(updatedActivities);
         localStorage.setItem("SavedActivity", JSON.stringify(updatedActivities));
+    };
+
+    const handleMark = (activity: string) => {
+        setMarkedItems(prevState =>
+            prevState.includes(activity)
+                ? prevState.filter(item => item !== activity)
+                : [...prevState, activity]
+        );
     };
 
     useEffect(() => {
@@ -91,9 +102,12 @@ const MainContent = ({ activitiesList, setActivitiesList }: MainContentProps) =>
     return (
         <StyledMainContent>
             {activitiesList.map((item, index) => (
-                <StyledPar key={index}>
-                    <p>{item}</p>
-                    <StyledButton onClick={() => handleDelete(item)}>DELETE</StyledButton>
+                <StyledPar key={index} mark={markedItems.includes(item)}>
+                    {item}
+                    <div>
+                        <StyledButton onClick={() => handleMark(item)}>MARK</StyledButton>
+                        <StyledButton onClick={() => handleDelete(item)}>DELETE</StyledButton>
+                    </div>
                 </StyledPar>
             ))}
         </StyledMainContent>
