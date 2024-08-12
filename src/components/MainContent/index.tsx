@@ -34,14 +34,15 @@ const StyledMainContent = styled.div`
         flex-direction: row;
         flex: 0 0 calc(50% - 24px);
         flex-wrap: wrap;
-        justify-content: center;
+        
     }
 `;
 
 const StyledPar = styled.div<{ mark: boolean }>`
     background-color: #A8DCD9;
-    height: 60px;
-    width: 60%;
+    max-height:80px;
+    min-height: 60px;
+    width: 80%;
     border: 2px solid #333333;
     border-radius: 10px;
     cursor: pointer;
@@ -50,16 +51,23 @@ const StyledPar = styled.div<{ mark: boolean }>`
     align-items: center;
     justify-content: space-between;
     padding: 0 10px;
-    font-size: 1.7rem;
+    font-size: 1.rem;
+    margin: 12px;
 
     &:hover {
         background-color: white;
     }
     @media only screen and ${screens.md} {
-        font-size: 2rem;
+        font-size: 1.8rem;
+        width: 70%;
+        max-height:100px;
+        min-height: 80px;
     }
     @media only screen and ${screens.lg} {
         flex: 0 0 calc(50% - 24px);
+        width: 60%;
+        max-height:100px;
+        min-height: 90px;
     }
 `;
 
@@ -90,14 +98,12 @@ const MainContent = ({ activitiesList, setActivitiesList }: MainContentProps) =>
 
     const handleMark = (activity: string) => {
         setMarkedItems(prevState =>
-            prevState.includes(activity)
-                ? prevState.filter(item => item !== activity)
-                : [...prevState, activity]
+            prevState.includes(activity) ? prevState.filter(item => item !== activity) : [...prevState, activity]
         );
     };
 
     useEffect(() => {
-        // Load activities from localStorage on component mount
+        
         const savedActivities = localStorage.getItem("SavedActivity");
         if (savedActivities) {
             setActivitiesList(JSON.parse(savedActivities));
