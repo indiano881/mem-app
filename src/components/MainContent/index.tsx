@@ -40,7 +40,7 @@ const StyledMainContent = styled.div`
 
 const StyledPar = styled.div<{ mark: boolean }>`
     background-color: #A8DCD9;
-    max-height:80px;
+    max-height:auto;
     min-height: 60px;
     width: 80%;
     border: 2px solid #333333;
@@ -70,6 +70,9 @@ const StyledPar = styled.div<{ mark: boolean }>`
         min-height: 90px;
     }
 `;
+const StyledBtnContainer = styled.div`
+    width: 80px;
+`
 
 const StyledButton = styled.button`
     border: 2px solid #333333;
@@ -77,6 +80,7 @@ const StyledButton = styled.button`
     cursor: pointer;
     margin-left: 10px;
     font-weight: bold;
+    width: 68px;
     &:hover {
         background-color: #F79D65;
     }
@@ -133,10 +137,10 @@ const MainContent = ({ activitiesList, setActivitiesList,markedItems, setMarkedI
             {activitiesList.map((item, index) => (
                 <StyledPar key={index} mark={markedItems.includes(item)}>
                     {item}
-                    <div>
+                    <StyledBtnContainer>
                         <StyledButton onClick={() => handleMark(item)}>MARK</StyledButton>
                         <StyledButton onClick={() => handleDelete(item)}>DELETE</StyledButton>
-                    </div>
+                    </StyledBtnContainer>
                 </StyledPar>
             ))}
         </StyledMainContent>
