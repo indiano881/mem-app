@@ -18,7 +18,7 @@ const StyledForm = styled.form`
     
     input {
         border: 2px solid #333333;
-        border-radius: 10px;
+        border-radius: 4px;
         margin-left: 8px; 
         margin-right: 8px; 
     }
@@ -26,7 +26,7 @@ const StyledForm = styled.form`
 
 const StyledButton = styled.button`
     border: 2px solid #333333;
-    border-radius: 10px;
+    border-radius: 4px;
     cursor: pointer;
 
     &:hover {

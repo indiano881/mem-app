@@ -73,10 +73,10 @@ const StyledPar = styled.div<{ mark: boolean }>`
 
 const StyledButton = styled.button`
     border: 2px solid #333333;
-    border-radius: 10px;
+    border-radius: 4px;
     cursor: pointer;
     margin-left: 10px;
-
+    font-weight: bold;
     &:hover {
         background-color: #F79D65;
     }
