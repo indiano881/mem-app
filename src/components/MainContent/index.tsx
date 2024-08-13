@@ -15,6 +15,9 @@ const slidein = keyframes`
 
 const StyledMainContent = styled.div`
     align-items: center;
+    animation: ${slidein} 65s alternate infinite forwards;
+    background-image: url('https://static.pexels.com/photos/414171/pexels-photo-414171.jpeg');
+    background-size: cover;
     background-color: #A8DCD9;
     color: #333333;
     display: flex;
@@ -24,50 +27,47 @@ const StyledMainContent = styled.div`
     min-height: 700px;
     text-align: center;
 
-    background-image: url('https://static.pexels.com/photos/414171/pexels-photo-414171.jpeg');
-    background-size: cover;
-    animation: ${slidein} 65s alternate infinite forwards;
-
     @media only screen and ${screens.lg} {
         align-items: normal;
         display: flex;
         flex-direction: row;
         flex: 0 0 calc(50% - 24px);
         flex-wrap: wrap;
-        
     }
 `;
 
 const StyledPar = styled.div<{ mark: boolean }>`
+    align-items: center;
     background-color: #A8DCD9;
-    max-height:auto;
-    min-height: 60px;
-    width: 80%;
     border: 2px solid #333333;
     border-radius: 10px;
     cursor: pointer;
-    text-decoration: ${props => props.mark ? "line-through" : "none"};
     display: flex;
-    align-items: center;
+    font-size: 1rem;
     justify-content: space-between;
-    padding: 0 10px;
-    font-size: 1.rem;
     margin: 12px;
-
+    max-height:auto;
+    min-height: 60px;
+    text-decoration: ${props => props.mark ? "line-through" : "none"};
+    padding: 0 10px;
+    width: 80%;
+    
     &:hover {
         background-color: white;
     }
+
     @media only screen and ${screens.md} {
         font-size: 1.8rem;
-        width: 70%;
         max-height:100px;
         min-height: 80px;
+        width: 70%;
     }
+
     @media only screen and ${screens.lg} {
         flex: 0 0 calc(50% - 24px);
-        width: 60%;
         max-height:100px;
-        min-height: 90px;
+        min-height: auto;
+        width: 60%;
     }
 `;
 const StyledBtnContainer = styled.div`
@@ -78,9 +78,10 @@ const StyledButton = styled.button`
     border: 2px solid #333333;
     border-radius: 4px;
     cursor: pointer;
-    margin-left: 10px;
     font-weight: bold;
+    margin-left: 10px;
     width: 68px;
+
     &:hover {
         background-color: #F79D65;
     }
@@ -119,17 +120,21 @@ const MainContent = ({ activitiesList, setActivitiesList,markedItems, setMarkedI
     useEffect(() => {
         
         const savedActivities = localStorage.getItem("SavedActivity");
+
         if (savedActivities) {
             setActivitiesList(JSON.parse(savedActivities));
         }
+
     }, [setActivitiesList]);
 
     useEffect(() => {
         
         const savedActivities = localStorage.getItem("markedActivities");
+
         if (savedActivities) {
             setMarkedItems(JSON.parse(savedActivities));
         }
+
     }, [setMarkedItems]);
 
     return (

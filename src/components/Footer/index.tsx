@@ -1,6 +1,5 @@
 import styled from "styled-components"
 
-
 const StyledFooter= styled.footer`
     align-items: center;
     background-color: #F79D65;

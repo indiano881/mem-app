@@ -17,19 +17,21 @@ function App() {
   useEffect(() => {
     const savedActivities = localStorage.getObj("UserSavedActivities");
     const markedActivities = localStorage.getObj("markedActivities");
+
     if (savedActivities) {
       setActivitiesList(savedActivities);
     }
+
     if (markedActivities) {
       setMarkedItems(markedActivities);
     }
+
   }, []);
 
   return (
     <>
       <Header />
       <Form setActivitiesList={setActivitiesList} activitiesList={activitiesList} />
-      {console.log(activitiesList)}
       <MainContent activitiesList={activitiesList} setActivitiesList={setActivitiesList} markedItems={markedItems} setMarkedItems={setMarkedItems}/>
       <Footer />
     </>

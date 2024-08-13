@@ -1,9 +1,9 @@
+import { SetStateAction, useState} from "react";
+import styled from "styled-components";
+
 Storage.prototype.setObj = function(key: string, obj: any) {
     return this.setItem(key, JSON.stringify(obj));
 };
-
-import { SetStateAction, useState} from "react";
-import styled from "styled-components";
 
 const StyledForm = styled.form`
     align-items: center;
@@ -48,6 +48,7 @@ const Form = ({ setActivitiesList, activitiesList }: FormProps) => {
 
     const handleSubmit = (event: { preventDefault: () => void; }) => {
         event.preventDefault();
+        
         if (activity.trim()) {
             const updatedActivities = [...activitiesList, activity];
             setActivitiesList(updatedActivities);
